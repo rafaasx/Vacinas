@@ -1,0 +1,96 @@
+﻿@{
+    Layout = null;
+}
+    <h2>Pacote</h2>
+        <div class="form-horizontal">
+            <ul id="validationSummary"></ul>
+            Tem certeza que deseja deletar {{Pacote}}?
+            <div class="form-group">
+                <label for="Regiao" class = "control-label col-md-2">Regiao</label>
+                <div class="col-md-10">
+                    <p> class="form-control-static">{{data.Regiao_Nome}}</p>
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label for="DataEnvio" class = "control-label col-md-2">
+                DataEnvio
+                </label>
+                <div class="col-md-10">
+                    {{data.DataEnvio}}
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label for="QuantidadeCriancas" class = "control-label col-md-2">
+                QuantidadeCriancas
+                </label>
+                <div class="col-md-10">
+                    {{data.QuantidadeCriancas}}
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label for="QuantidadeAdultos" class = "control-label col-md-2">
+                QuantidadeAdultos
+                </label>
+                <div class="col-md-10">
+                    {{data.QuantidadeAdultos}}
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label for="QuantidadeIdosos" class = "control-label col-md-2">
+                QuantidadeIdosos
+                </label>
+                <div class="col-md-10">
+                    {{data.QuantidadeIdosos}}
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label for="TotalCriancas" class = "control-label col-md-2">
+                TotalCriancas
+                </label>
+                <div class="col-md-10">
+                    {{data.TotalCriancas}}
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label for="TotalAdultos" class = "control-label col-md-2">
+                TotalAdultos
+                </label>
+                <div class="col-md-10">
+                    {{data.TotalAdultos}}
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label for="TotalIdosos" class = "control-label col-md-2">
+                TotalIdosos
+                </label>
+                <div class="col-md-10">
+                    {{data.TotalIdosos}}
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label for="TotalGeral" class = "control-label col-md-2">
+                TotalGeral
+                </label>
+                <div class="col-md-10">
+                    {{data.TotalGeral}}
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Confirmar" class="btn btn-danger" ng-click="save()" />
+                </div>
+            </div>
+        </div>
+    
+    <div>
+        <a href="#/Pacote" class="btn btn-primary">Voltar para Lista</a>
+    </div>

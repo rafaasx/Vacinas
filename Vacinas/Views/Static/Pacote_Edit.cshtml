@@ -1,0 +1,117 @@
+﻿@{
+    Layout = null;
+}
+<h2>Pacote</h2>
+<form name="form">
+    <div class="form-horizontal">
+        <ul id="validationSummary"></ul>
+        <div class="form-group">
+            <label for="Codigo" class="control-label col-md-2"> Código </label>
+            <div class="col-md-10">
+                <input type="text" ng-model="data.Id" id="Codigo" class="form-control" ng-disabled="true"/>
+                <div id="validation_for_Codigo"></div>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': form.RegiaoId.$invalid && !form.RegiaoId.$pristine}">
+            <label for="RegiaoId" class="control-label col-md-2"> Região </label>
+            <div class="col-md-10">
+                <select ng-model="RegiaoId" id="RegiaoId" name="RegiaoId" class="form-control" ng-change="changeRegiao()" ng-options="item.Id as item.Nome for item in RegiaoId_options" ng-required="true">
+                    <option value="">-- Selecione uma Região --</option>
+                </select>
+                <div id="validation_for_RegiaoId">
+                    <p ng-show="form.RegiaoId.$invalid && !form.RegiaoId.$pristine" class="help-block">A região é obrigatória!</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': form.DataEnvio.$invalid && !form.DataEnvio.$pristine}">
+            <div class="col-md-12">
+                <label for="DataEnvio" class="control-label col-md-2"> Data Envio </label>
+                <div class="input-group col-md-3">
+                    <input type="text" class="form-control" name="DataEnvio" uib-datepicker-popup="dd/MM/yyyy" ng-model="data.DataEnvio" is-open="popup.opened" datepicker-options="dateOptions" ng-required="true" close-text="Fechar" alt-input-formats="['d!/M!/yyyy']" current-text="Hoje" clear-text="Limpar"/>
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="openPopup()"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </div>
+                </div>
+                <div id="validation_for_DataEnvio">
+                    <p ng-show="form.DataEnvio.$invalid && !form.DataEnvio.$pristine" class="help-block">Data do envio é obrigatório!</p>
+                </div>
+            </div>
+            </div>
+            <div class="form-group">
+                <label for="QuantidadeCriancas" class="control-label col-md-2"> Quantidade Criancas </label>
+                <div class="col-md-10">
+                    <input type="text" ng-model="data.QuantidadeCriancas" id="Quantidade Criancas" class="form-control" ng-change="calcularTotais()" />
+                    <div id="validation_for_QuantidadeCriancas"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="QuantidadeAdultos" class="control-label col-md-2"> Quantidade Adultos </label>
+                <div class="col-md-10">
+                    <input type="text" ng-model="data.QuantidadeAdultos" id="QuantidadeAdultos" class="form-control" ng-change="calcularTotais()" />
+                    <div id="validation_for_QuantidadeAdultos"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="QuantidadeIdosos" class="control-label col-md-2"> Quantidade Idosos </label>
+                <div class="col-md-10">
+                    <input type="text" ng-model="data.QuantidadeIdosos" id="QuantidadeIdosos" class="form-control" ng-change="calcularTotais()" />
+                    <div id="validation_for_QuantidadeIdosos"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="TotalCriancas" class="control-label col-md-2"> Total Criancas </label>
+                <div class="col-md-10">
+                    <input type="text" ng-model="data.TotalCriancas" id="TotalCriancas" class="form-control" disabled />
+                    <div id="validation_for_TotalCriancas"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="TotalAdultos" class="control-label col-md-2"> Total Adultos </label>
+                <div class="col-md-10">
+                    <input type="text" ng-model="data.TotalAdultos" id="TotalAdultos" class="form-control" disabled />
+                    <div id="validation_for_TotalAdultos"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="TotalIdosos" class="control-label col-md-2"> Total Idosos </label>
+                <div class="col-md-10">
+                    <input type="text" ng-model="data.TotalIdosos" id="TotalIdosos" class="form-control" disabled />
+                    <div id="validation_for_TotalIdosos"></div>
+                </div>
+            </div>
+
+            <div class="form-group" ng-class="{'has-error': validarEstoque()}">
+                <label for="TotalGeral" class="control-label col-md-2"> Total Geral </label>
+                <div class="col-md-10">
+                    <input type="text" ng-model="data.TotalGeral" id="TotalGeral" class="form-control" disabled />
+                    <div id="validation_for_TotalGeral">
+                        <p ng-show="validarEstoque()" class="help-block">Total geral não pode ser maior que o estoque!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" ng-class="{'has-error': validarEstoque()}">
+                <label for="Estoque" class="control-label col-md-2"> Estoque Atual </label>
+                <div class="col-md-10">
+                    <input type="text" ng-model="estoque" id="Estoque" class="form-control" disabled />
+                    <div id="validation_for_Estoque">
+                    </div>
+                </div>
+            </div>
+
+        <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="button" value="Salvar" class="btn btn-primary" ng-disabled="form.$invalid || validarEstoque()" ng-click="save()" />
+                </div>
+            </div>
+    </div>
+</form>
+
+<div>
+    <a href="#/Pacote" class="btn btn-default">Voltar para Lista</a>
+</div>

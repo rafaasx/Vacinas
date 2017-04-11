@@ -1,0 +1,25 @@
+﻿@{
+    Layout = null;
+}
+<h2>Regiao</h2>
+<div class="form-horizontal">
+    <ul id="validationSummary"></ul>
+    <div class="form-group">
+        Tem certeza que deseja deletar {{Regiao}}?
+    </div>
+    <div class="form-group">
+        <label for="Nome" class="control-label col-md-2">Nome</label>
+        <div class="col-md-10">
+            <p class="form-control-static">{{data.Nome}}</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-4 col-md-10">
+            <input type="submit" value="Confirmar" class="btn btn-danger" ng-click="save()" />
+        </div>
+    </div>
+</div>
+
+<div>
+    <a href="#/Regiao" class="btn btn-primary">Voltar para Lista</a>
+</div>

@@ -1,0 +1,32 @@
+﻿@{
+    Layout = null;
+}
+<h2>Estoque</h2>
+<p>
+    <a href="#/Estoque/Create" class="btn btn-primary">Adicionar</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                Quantidade
+            </th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="item in data">
+            <td>
+                {{ item.Quantidade | finance:false:2 }}
+            </td>
+            <td>
+                <div class="btn-group">
+                    <a ng-href="#/Estoque/Edit/{{item.Id}}" class="btn btn-info">Editar</a>
+                    <a ng-href="#/Estoque/{{item.Id}}" class="btn btn-info">Detalhes</a>
+                    <a ng-href="#/Estoque/Delete/{{item.Id}}" class="btn btn-info">Deletar</a>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+
+</table>

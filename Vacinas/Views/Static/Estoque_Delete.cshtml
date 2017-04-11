@@ -1,0 +1,23 @@
+﻿@{
+    Layout = null;
+}
+<h2>Estoque</h2>
+<div class="form-horizontal">
+    <ul id="validationSummary"></ul>
+    Tem certeza que deseja deletar {{Estoque}}?
+    <div class="form-group">
+        <label for="Quantidade" class="control-label col-md-2">Quantidade</label>
+        <div class="col-md-10">
+            <p class="form-control-static">{{data.Quantidade}}</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-4 col-md-10">
+            <input type="submit" value="Confirmar" class="btn btn-danger" ng-click="save()" />
+        </div>
+    </div>
+</div>
+
+<div>
+    <a href="#/Estoque" class="btn btn-default">Voltar para Lista</a>
+</div>

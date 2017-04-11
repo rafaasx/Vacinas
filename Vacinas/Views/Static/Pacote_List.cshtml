@@ -1,0 +1,85 @@
+﻿@{
+    Layout = null;
+}
+<h2>Pacote</h2>
+<div class=" form-inline row">
+    <div class="col-sm-7">
+        <p>
+            <a href="#/Pacote/Create" class="btn btn-primary">Adicionar</a>
+        </p>
+    </div>
+    <div class="col-sm-2">
+        <label class="control-label">Estoque</label>
+        <span class="control-label">{{estoque}}</span>
+    </div>
+    <div class="col-sm-3">
+        <label class="control-label">Busca</label>
+        <input type="text" class="form-control" placeholder="Busca" ng-model="busca">
+    </div>
+    
+</div>
+
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>
+            Código
+        </th>        
+        <th>
+            Região
+        </th>
+        <th>
+            Data Envio
+        </th>
+        <th>
+            Total Criancas
+        </th>
+        <th>
+            Total Adultos
+        </th>
+        <th>
+            Total Idosos
+        </th>
+        <th>
+            Total Geral
+        </th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="item in data | filter: filtro">
+        <td>
+            {{ item.Id }}
+        </td>        
+        <td>
+            <a ng-href="#Regiao/{{item.RegiaoId }}">
+                {{item.Regiao_Nome}}
+            </a>
+        </td>
+        <td>
+            {{ item.DataEnvio | date:'dd/MM/yyyy'}}
+        </td>
+        <td>
+            {{ item.TotalCriancas }}
+        </td>
+        <td>
+            {{ item.TotalAdultos }}
+        </td>
+        <td>
+            {{ item.TotalIdosos }}
+        </td>
+        <td>
+            {{ item.TotalGeral }}
+        </td>
+        <td style="white-space: nowrap; width: 25%;">
+            <div class="btn-group">
+                <a ng-href="#/Pacote/Edit/{{item.Id}}" class="btn btn-info">Editar</a>
+                <a ng-href="#/Pacote/{{item.Id}}" class="btn btn-info">Detalhes</a>
+                <a ng-href="#/Pacote/Delete/{{item.Id}}" class="btn btn-info">Deletar</a>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+
+</table>
