@@ -102,9 +102,9 @@ namespace Vacinas.Controllers
         }
 
         [HttpGet]
+        [Route("Api/Estoque/BuscarSaldo/{id}")]
         [ActionName("BuscarSaldo")]
-        [ResponseType(typeof(PacoteDTO))]
-        public IHttpActionResult PostBuscarSaldo(int qtd)
+        public IHttpActionResult GetBuscarSaldo(int id)
         {
             var ret = db.Estoque.Sum(x => x.Quantidade) - db.Pacote.Sum(x => x.TotalGeral);
             return Ok(ret);
